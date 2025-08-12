@@ -1,23 +1,24 @@
 NAME = Rinoceronte
+TESTNAME = Test
 
 CC = g++
 CFLAGS = -g
 
-SRC = main.cpp
+SRC = main_menu.cpp
 
-all: $(NAME) 
-
-$(UTILS):
-	$(MAKE) -C $(UTILS_DIR)
+ATTIVITATESTSRC = Attivita/mainAttivitaTest.cpp Attivita/TestAttivita.cpp Attivita/Attivita.cpp
 
 $(NAME): $(SRC)
 	$(CC) -o $(NAME) $(CFLAGS) $(SRC) -lncurses -lpanel
 
-clean:
-	rm -f
+valTestAttivita:
+	$(CC) -o $(TESTNAME) $(ATTIVITATESTSRC) -lncurses -lpanel && sudo valgrind ./$(TESTNAME)
 
-fclean: clean
-	rm -f $(NAME)
+TestAttivita:
+	$(CC) -o $(TESTNAME) $(ATTIVITATESTSRC) -lncurses -lpanel && ./$(TESTNAME)
+
+fclean:
+	rm -f $(NAME) && rm -f $(TESTNAME)
 	
 re: fclean $(NAME)
 
