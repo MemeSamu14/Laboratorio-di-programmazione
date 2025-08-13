@@ -4,7 +4,7 @@ TESTNAME = Test
 CC = g++
 CFLAGS = -g
 
-SRC = main.cpp
+SRC = main.cpp draw.cpp optionsMainMenu.cpp
 
 ATTIVITATESTSRC = Attivita/mainAttivitaTest.cpp Attivita/TestAttivita.cpp Attivita/Attivita.cpp
 
