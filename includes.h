@@ -21,7 +21,7 @@ bool	areYouSurePanel(WINDOW *win, const char *option);
 int		optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection);
 void	exit(WINDOW *win);
 
+void	noteMenu(WINDOW *win);
 
-void	noteMenu(WINDOW *main, int yMax, int xMax);
 
 void	mainLoop(WINDOW *win, int yMax, int xMax);

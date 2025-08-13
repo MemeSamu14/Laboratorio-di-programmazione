@@ -15,7 +15,7 @@ void	mainLoop(WINDOW *win, int yMax, int xMax)
 		switch (option)
 		{
 			case NOTE:
-				noteMenu(win, yMax, xMax);
+				noteMenu(win);
 			case ESCI:
 				exit(win);
 		}
@@ -30,7 +30,7 @@ int	main()
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW *win = newwin(yMax / 6, xMax / 6, yMax / 6, xMax / 6);
+	WINDOW *win = newwin(yMax / 6, xMax / 6, yMax / 4 , xMax / 2);
 	mainLoop(win, yMax, xMax);
 	endwin();
 	return (0);
