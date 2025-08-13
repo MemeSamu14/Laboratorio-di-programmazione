@@ -1,6 +1,7 @@
 NAME = Rinoceronte
 TESTNAME = Test
-
+SUPPRESSION_NAME = supp.supp
+LOG_NAME = supp
 CC = g++
 CFLAGS = -g
 
@@ -16,6 +17,11 @@ valTestAttivita:
 
 TestAttivita:
 	$(CC) -o $(TESTNAME) $(ATTIVITATESTSRC) -lncurses -lpanel && ./$(TESTNAME)
+
+suppressions:
+	sudo valgrind --leak-check=full --gen-suppressions=all --log-file="$(LOG_NAME)" ./$(NAME)
+	sed -n '/{/,/}/p' $(LOG_NAME) | grep -v '==[0-9]*==' > $(SUPPRESSION_NAME)
+	rm -f $(LOG_NAME)
 
 fclean:
 	rm -f $(NAME) && rm -f $(TESTNAME)
