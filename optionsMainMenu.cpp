@@ -2,9 +2,14 @@
 
 int	optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection)
 {
-	if ((*mainMenuSelection) == ESCI)
+	if (input == 10)
 	{
-		if (input == 10)
+		if ((*mainMenuSelection) == NOTE)
+		{
+			wclear(win);
+			return (NOTE);
+		}
+		if ((*mainMenuSelection) == ESCI)
 		{
 			if (areYouSurePanel(win, "Exit") == true)
 				return (ESCI);
@@ -15,7 +20,7 @@ int	optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection)
 			}
 		}
 	}
-	return (0);
+	return (-1);
 }
 
 void	exit(WINDOW *win)

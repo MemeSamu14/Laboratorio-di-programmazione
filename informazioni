@@ -18,3 +18,4 @@ mvwprintw() -> permette di stampare una stringa nella finestra.
 wattron() -> tutto quello che scrivo sulla finesetra viene evidenziato.
 wattroff() -> rimuove la condizione di evidenziare.
 wclear(WINDOW *win) -> permette di pulire lo schermo. 
+werefresh(WINDOW *win) -> mette a schermo le modifiche.
