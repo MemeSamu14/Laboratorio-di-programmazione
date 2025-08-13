@@ -5,12 +5,20 @@
 
 enum	Selection
 {
+	NOSELECTION = -1,
 	NOTE = 0,
 	OPZIONI = 1,
 	ESCI = 2,
-	NOSELECTION = 3,
 	YES = 4,
-	NO = 5
+	NO = 5,
+	LUNEDI = 6,
+	MARTEDI = 7,
+	MERCOLEDI = 8,
+	GIOVEDI = 9,
+	VENERDI = 10,
+	SABATO = 11,
+	DOMENICA = 12,
+	INDIETRO = 13
 };
 
 /*-------------------------draw.cpp----------------------------------*/

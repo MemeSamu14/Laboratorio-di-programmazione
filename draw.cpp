@@ -8,7 +8,7 @@ void	drawMainMenu(WINDOW *win, char input, int *selection)
 	mvwprintw(win, 5, 2, "Esci");
 	if (input == '	')
 		(*selection)++;
-	if ((*selection) == NOSELECTION)
+	if ((*selection) == 3)
 		(*selection) = NOTE;
 	if ((*selection) == NOTE)
 	{
@@ -45,7 +45,7 @@ void	drawMainMenu(WINDOW *win, char input, int *selection)
 bool	areYouSurePanel(WINDOW *win, const char *option)
 {
 	bool	value = false;
-	int		selection = NOSELECTION;
+	int		selection = YES - 1;
 	int		yMax, xMax;
 	wclear(win);
 	box(win, 0, 0);
@@ -64,7 +64,7 @@ bool	areYouSurePanel(WINDOW *win, const char *option)
 		{
 			selection++;
 			if (selection == 6)
-				selection = NOSELECTION;
+				selection = YES;
 			if (selection == YES)
 			{
 				wattron(win, A_STANDOUT);
