@@ -16,7 +16,6 @@ bool	areYouSurePanel(const char *option)
 	mvwprintw(win, (yMax / 2), (xMax / 8), "Yes");
 	mvwprintw(win, (yMax / 2), (xMax / 3) + (xMax / 2), "No");
     refresh();
-	std::cout << yMax  << " | "<< xMax << std::endl; 
 	char	input;
 	while (input = wgetch(win))
 	{
