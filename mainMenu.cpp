@@ -3,6 +3,7 @@
 
 void	mainMenu(WINDOW *win, char input, int *selection)
 {
+	wrefresh(win);
 	box(win, 0, 0);
 	mvwprintw(win, 1, 2, "Note");
 	mvwprintw(win, 3, 2, "Opzioni");
@@ -43,32 +44,30 @@ void	mainMenu(WINDOW *win, char input, int *selection)
 	}
 }
 
-int	optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection)
+int	optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection, Registro **reg)
 {
 	if (input == 10)
 	{
 		if ((*mainMenuSelection) == NOTE)
-		{
-			wclear(win);
 			return (NOTE);
-		}
 		if ((*mainMenuSelection) == ESCI)
 		{
-			if (areYouSurePanel(win, "Exit") == true)
+			wclear(win);
+			if (areYouSurePanel("Exit") == true)
 				return (ESCI);
 			else
 			{
 				wclear(win);
-				mainMenu(win, input, mainMenuSelection);
+				delwin(win);
+				mainLoop(reg);
 			}
 		}
 	}
 	return (-1);
 }
 
-void	exit(WINDOW *win)
+void	exit()
 {
-	delwin(win);
 	endwin();
 	exit(1);
 }

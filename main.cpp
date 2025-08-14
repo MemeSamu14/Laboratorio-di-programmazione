@@ -1,22 +1,34 @@
 #include "includes.h"
 
-void	mainLoop(WINDOW *win, int yMax, int xMax, Registro **reg)
+void	closeWin(WINDOW *win)
+{
+	wclear(win);
+	wrefresh(win);
+	delwin(win);
+}
+
+void	mainLoop(Registro **reg)
 {
 	char	input;
 	int		mainMenuSelection = -1;
 	int		option;
+	int		yMax, xMax;
 
+	getmaxyx(stdscr, yMax, xMax);
+	WINDOW *win = newwin(yMax / 6, xMax / 6, yMax / 4 , xMax / 2);
 	mainMenu(win, input, &mainMenuSelection);
 	while (input = wgetch(win))
 	{
 		mainMenu(win, input, &mainMenuSelection);
-		option = optionsMainMenu(win, input, &mainMenuSelection);
+		option = optionsMainMenu(win, input, &mainMenuSelection, reg);
 		switch (option)
 		{
 			case NOTE:
-				noteMenu(win, reg);
+				closeWin(win);
+				noteMenu(reg);
 			case ESCI:
-				exit(win);
+				delwin(win);
+				exit();
 		}
 	}
 }
@@ -37,13 +49,10 @@ int	main()
 	initscr();
 	noecho();
 	curs_set(0);
-	int	yMax, xMax;
-	getmaxyx(stdscr, yMax, xMax);
 
 	Registro** reg = new Registro*[7];
 	initRegister(reg);
-	WINDOW *win = newwin(yMax / 6, xMax / 6, yMax / 4 , xMax / 2);
-	mainLoop(win, yMax, xMax, reg);
+	mainLoop(reg);
 	endwin();
 	return (0);
 }

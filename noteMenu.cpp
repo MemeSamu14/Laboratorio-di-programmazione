@@ -1,6 +1,6 @@
 #include "includes.h"
 
-void	daysMenu(WINDOW *note, char input, int *selection)
+void	displayDay(WINDOW *note, char input, int *selection)
 {
 	box(note, 0, 0);
 	if ((*selection) == LUNEDI - 1)
@@ -128,11 +128,11 @@ void	daysMenu(WINDOW *note, char input, int *selection)
 }
 
 
-// int	drawRegisterMenu(WINDOW *regMen, Registro **reg)
+// int	drawRegisterMenu(WINDOW *win, Registro **reg)
 // {
-// 	// box(regMen, 0, 0);
-// 	// mvwprintw(regMen, 1, 2, reg->getGiorno().c_str());
-// 	box(regMen, 0, 0);
+// 	// box(win, 0, 0);
+// 	// mvwprintw(win, 1, 2, reg->getGiorno().c_str());
+// 	box(win, 0, 0);
 
 	
 // }
@@ -142,18 +142,18 @@ void	registerMenu(int index, Registro **reg)
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW *regMen = newwin(15, 25, yMax / 4 , xMax / 3);
+	WINDOW *win = newwin(13, 25, yMax / 4 , xMax / 3);
 	char	input;
 	int		selection = VISUALIZZA - 1;
-	box(regMen, 0, 0);
-	wattron(regMen, A_BOLD);
-	mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
-	wattroff(regMen, A_BOLD);
-	mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
-	mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
-	mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
-	mvwprintw(regMen, 11, 2, "<- Indietro");
-	while (input = wgetch(regMen))
+	box(win, 0, 0);
+	wattron(win, A_BOLD);
+	mvwprintw(win, 1, 2, reg[index]->getGiorno().c_str());
+	wattroff(win, A_BOLD);
+	mvwprintw(win, 5, 2, "Vedi Lista Attivita");
+	mvwprintw(win, 7, 2, "Aggiungi Attivita");
+	mvwprintw(win, 9, 2, "Rimuovi Attivita");
+	mvwprintw(win, 11, 2, "<- Indietro");
+	while (input = wgetch(win))
 	{		
 		if (input == '	')
 		{
@@ -162,61 +162,80 @@ void	registerMenu(int index, Registro **reg)
 				selection = VISUALIZZA;
 			if (selection == VISUALIZZA)
 			{
-				wattron(regMen, A_BOLD);
-				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
-				wattroff(regMen, A_BOLD);
-				wattron(regMen, A_STANDOUT);
-				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
-				wattroff(regMen, A_STANDOUT);
-				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
-				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
-				mvwprintw(regMen, 11, 2, "<- Indietro");
+				wattron(win, A_BOLD);
+				mvwprintw(win, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(win, A_BOLD);
+				wattron(win, A_STANDOUT);
+				mvwprintw(win, 5, 2, "Vedi Lista Attivita");
+				wattroff(win, A_STANDOUT);
+				mvwprintw(win, 7, 2, "Aggiungi Attivita");
+				mvwprintw(win, 9, 2, "Rimuovi Attivita");
+				mvwprintw(win, 11, 2, "<- Indietro");
 			}
 			else if (selection == AGGIUNGI)
 			{
-				wattron(regMen, A_BOLD);
-				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
-				wattroff(regMen, A_BOLD);
-				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
-				wattron(regMen, A_STANDOUT);
-				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
-				wattroff(regMen, A_STANDOUT);
-				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
-				mvwprintw(regMen, 11, 2, "<- Indietro");
+				wattron(win, A_BOLD);
+				mvwprintw(win, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(win, A_BOLD);
+				mvwprintw(win, 5, 2, "Vedi Lista Attivita");
+				wattron(win, A_STANDOUT);
+				mvwprintw(win, 7, 2, "Aggiungi Attivita");
+				wattroff(win, A_STANDOUT);
+				mvwprintw(win, 9, 2, "Rimuovi Attivita");
+				mvwprintw(win, 11, 2, "<- Indietro");
 			}
 			else if (selection == ELIMINA)
 			{
-				wattron(regMen, A_BOLD);
-				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
-				wattroff(regMen, A_BOLD);
-				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
-				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
-				wattron(regMen, A_STANDOUT);
-				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
-				wattroff(regMen, A_STANDOUT);
-				mvwprintw(regMen, 11, 2, "<- Indietro");
+				wattron(win, A_BOLD);
+				mvwprintw(win, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(win, A_BOLD);
+				mvwprintw(win, 5, 2, "Vedi Lista Attivita");
+				mvwprintw(win, 7, 2, "Aggiungi Attivita");
+				wattron(win, A_STANDOUT);
+				mvwprintw(win, 9, 2, "Rimuovi Attivita");
+				wattroff(win, A_STANDOUT);
+				mvwprintw(win, 11, 2, "<- Indietro");
 			}
 			else if (selection == BACK)
 			{
-				wattron(regMen, A_BOLD);
-				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
-				wattroff(regMen, A_BOLD);
-				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
-				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
-				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
-				wattron(regMen, A_STANDOUT);
-				mvwprintw(regMen, 11, 2, "<- Indietro");
-				wattroff(regMen, A_STANDOUT);
+				wattron(win, A_BOLD);
+				mvwprintw(win, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(win, A_BOLD);
+				mvwprintw(win, 5, 2, "Vedi Lista Attivita");
+				mvwprintw(win, 7, 2, "Aggiungi Attivita");
+				mvwprintw(win, 9, 2, "Rimuovi Attivita");
+				wattron(win, A_STANDOUT);
+				mvwprintw(win, 11, 2, "<- Indietro");
+				wattroff(win, A_STANDOUT);
 			}
-			wrefresh(regMen);
+			wrefresh(win);
+		}
+		else if (input == 10)
+		{
+			if (selection == VISUALIZZA)
+			{
+				// viusalizza menu
+			}
+			else if (selection == AGGIUNGI)
+			{
+				// aggiungi menu
+			}
+			else if (selection == ELIMINA)
+			{
+				// elimina menu
+			}
+			else if (selection == BACK)
+			{
+				closeWin(win);
+				noteMenu(reg);
+			}
 		}
 	}
 }
 
 
-void	noteMenu(WINDOW *win, Registro **reg)
+void	noteMenu(Registro **reg)
 {
-	wrefresh(win);
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 	WINDOW *note = newwin(17, 13, yMax / 4 , xMax / 2);
@@ -224,24 +243,21 @@ void	noteMenu(WINDOW *win, Registro **reg)
 	int	noteSelection = LUNEDI - 1;
 	char	input = LUNEDI - 1;
 	int		option;
-	daysMenu(note, input, &noteSelection);
+	displayDay(note, input, &noteSelection);
 	while (input = wgetch(note))
 	{
-		daysMenu(note, input, &noteSelection);
+		displayDay(note, input, &noteSelection);
 		if (input == 10)
 		{
 			if (noteSelection >= LUNEDI && noteSelection <= DOMENICA)
 			{
-				wclear(note);
-				wrefresh(note);
+				closeWin(note);
 				registerMenu(noteSelection - LUNEDI, reg);
-				
 			}
 			else if (INDIETRO)
 			{
-				wclear(note);
-				wrefresh(note);
-				mainLoop(win, yMax, xMax, reg);
+				closeWin(note);
+				mainLoop(reg);
 			}
 		}
 	}

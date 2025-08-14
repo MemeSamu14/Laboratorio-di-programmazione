@@ -27,14 +27,17 @@ enum	Selection
 
 /*-------------------------draw.cpp----------------------------------*/
 
-bool	areYouSurePanel(WINDOW *win, const char *option);
+bool	areYouSurePanel(const char *option);
 
 /*-------------------------mainMenu.cpp----------------------------------*/
 void	mainMenu(WINDOW *win, char input, int *selection);
-int		optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection);
-void	exit(WINDOW *win);
+int		optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection, Registro **reg);
+void	exit();
 
-void	noteMenu(WINDOW *win, Registro **reg);
+void	noteMenu(Registro **reg);
 
 
-void	mainLoop(WINDOW *win, int yMax, int xMax, Registro **reg);
+void	mainLoop(Registro **reg);
+
+
+void	closeWin(WINDOW *win);
