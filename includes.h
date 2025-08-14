@@ -41,3 +41,5 @@ void	mainLoop(Registro **reg);
 
 
 void	closeWin(WINDOW *win);
+
+void	visualizzaMenu(Registro **reg, int index);

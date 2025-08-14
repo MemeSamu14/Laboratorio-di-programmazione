@@ -9,7 +9,7 @@ void	closeWin(WINDOW *win)
 
 void	mainLoop(Registro **reg)
 {
-	char	input;
+	char	input = 0;
 	int		mainMenuSelection = -1;
 	int		option;
 	int		yMax, xMax;
@@ -53,6 +53,5 @@ int	main()
 	Registro** reg = new Registro*[7];
 	initRegister(reg);
 	mainLoop(reg);
-	endwin();
 	return (0);
 }

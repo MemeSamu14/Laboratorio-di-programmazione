@@ -215,6 +215,9 @@ void	registerMenu(int index, Registro **reg)
 			if (selection == VISUALIZZA)
 			{
 				// viusalizza menu
+				// closeWin(win);
+				closeWin(win);
+				visualizzaMenu(reg, index);
 			}
 			else if (selection == AGGIUNGI)
 			{
@@ -254,7 +257,7 @@ void	noteMenu(Registro **reg)
 				closeWin(note);
 				registerMenu(noteSelection - LUNEDI, reg);
 			}
-			else if (INDIETRO)
+			else if (noteSelection == INDIETRO)
 			{
 				closeWin(note);
 				mainLoop(reg);
