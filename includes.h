@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include <iostream>
 #include <cstring>
-
+#include "Registro.hpp"
 
 enum	Selection
 {
@@ -18,18 +18,23 @@ enum	Selection
 	VENERDI = 10,
 	SABATO = 11,
 	DOMENICA = 12,
-	INDIETRO = 13
+	INDIETRO = 13,
+	VISUALIZZA = 14,
+	AGGIUNGI = 15,
+	ELIMINA = 16,
+	BACK = 17
 };
 
 /*-------------------------draw.cpp----------------------------------*/
-void	drawMainMenu(WINDOW *win, char input, int *selection);
+
 bool	areYouSurePanel(WINDOW *win, const char *option);
 
-/*-------------------------optionsMainMenu.cpp----------------------------------*/
+/*-------------------------mainMenu.cpp----------------------------------*/
+void	mainMenu(WINDOW *win, char input, int *selection);
 int		optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection);
 void	exit(WINDOW *win);
 
-void	noteMenu(WINDOW *win);
+void	noteMenu(WINDOW *win, Registro **reg);
 
 
-void	mainLoop(WINDOW *win, int yMax, int xMax);
+void	mainLoop(WINDOW *win, int yMax, int xMax, Registro **reg);

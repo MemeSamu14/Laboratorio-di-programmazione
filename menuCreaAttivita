@@ -1,0 +1,15 @@
+#include "includes.h"
+
+// void	creaAttivita(WINDOW *win)
+// {
+// 	box(win, 0, 0);
+// 	wprintw(win, 0, 0, "Nome dell'attivita': ");
+// 	curs_set(1);
+// 	getch();
+// }
+
+// int main( void )
+// {
+// 	WINDOW *win = new WINDOW()
+// 	return (0);
+// }

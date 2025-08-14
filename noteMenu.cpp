@@ -128,7 +128,93 @@ void	daysMenu(WINDOW *note, char input, int *selection)
 }
 
 
-void	noteMenu(WINDOW *win)
+// int	drawRegisterMenu(WINDOW *regMen, Registro **reg)
+// {
+// 	// box(regMen, 0, 0);
+// 	// mvwprintw(regMen, 1, 2, reg->getGiorno().c_str());
+// 	box(regMen, 0, 0);
+
+	
+// }
+
+void	registerMenu(int index, Registro **reg)
+{
+	int	yMax, xMax;
+	getmaxyx(stdscr, yMax, xMax);
+
+	WINDOW *regMen = newwin(15, 25, yMax / 4 , xMax / 3);
+	char	input;
+	int		selection = VISUALIZZA - 1;
+	box(regMen, 0, 0);
+	wattron(regMen, A_BOLD);
+	mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
+	wattroff(regMen, A_BOLD);
+	mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
+	mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
+	mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
+	mvwprintw(regMen, 11, 2, "<- Indietro");
+	while (input = wgetch(regMen))
+	{		
+		if (input == '	')
+		{
+			selection++;
+			if (selection == 18)
+				selection = VISUALIZZA;
+			if (selection == VISUALIZZA)
+			{
+				wattron(regMen, A_BOLD);
+				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(regMen, A_BOLD);
+				wattron(regMen, A_STANDOUT);
+				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
+				wattroff(regMen, A_STANDOUT);
+				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
+				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
+				mvwprintw(regMen, 11, 2, "<- Indietro");
+			}
+			else if (selection == AGGIUNGI)
+			{
+				wattron(regMen, A_BOLD);
+				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(regMen, A_BOLD);
+				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
+				wattron(regMen, A_STANDOUT);
+				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
+				wattroff(regMen, A_STANDOUT);
+				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
+				mvwprintw(regMen, 11, 2, "<- Indietro");
+			}
+			else if (selection == ELIMINA)
+			{
+				wattron(regMen, A_BOLD);
+				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(regMen, A_BOLD);
+				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
+				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
+				wattron(regMen, A_STANDOUT);
+				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
+				wattroff(regMen, A_STANDOUT);
+				mvwprintw(regMen, 11, 2, "<- Indietro");
+			}
+			else if (selection == BACK)
+			{
+				wattron(regMen, A_BOLD);
+				mvwprintw(regMen, 1, 2, reg[index]->getGiorno().c_str());
+				wattroff(regMen, A_BOLD);
+				mvwprintw(regMen, 5, 2, "Vedi Lista Attivita");
+				mvwprintw(regMen, 7, 2, "Aggiungi Attivita");
+				mvwprintw(regMen, 9, 2, "Rimuovi Attivita");
+				wattron(regMen, A_STANDOUT);
+				mvwprintw(regMen, 11, 2, "<- Indietro");
+				wattroff(regMen, A_STANDOUT);
+			}
+			wrefresh(regMen);
+		}
+	}
+}
+
+
+void	noteMenu(WINDOW *win, Registro **reg)
 {
 	wrefresh(win);
 	int	yMax, xMax;
@@ -138,32 +224,26 @@ void	noteMenu(WINDOW *win)
 	int	noteSelection = LUNEDI - 1;
 	char	input = LUNEDI - 1;
 	int		option;
-	// wrefresh(note);
 	daysMenu(note, input, &noteSelection);
 	while (input = wgetch(note))
 	{
 		daysMenu(note, input, &noteSelection);
 		if (input == 10)
 		{
-			switch (noteSelection)
+			if (noteSelection >= LUNEDI && noteSelection <= DOMENICA)
 			{
-				case INDIETRO:
-					wclear(note);
-					wrefresh(note);
-					mainLoop(win, yMax, xMax);
+				wclear(note);
+				wrefresh(note);
+				registerMenu(noteSelection - LUNEDI, reg);
+				
+			}
+			else if (INDIETRO)
+			{
+				wclear(note);
+				wrefresh(note);
+				mainLoop(win, yMax, xMax, reg);
 			}
 		}
-		// mvaddch(yMax / 2, xMax / 2, '-');
-		// wrefresh(note);
 	}
-	// mainLoop(win, yMax, xMax);
-	// wprintw(win, "ciao");
-	// wrefresh(win);
-	// wgetch(win);
-	// // touchwin();
-	// wnoutrefresh(win);
-	// doupdate();
-	input = wgetch(note);
-	// mainLoop(main, yMax, xMax);
 }
 
