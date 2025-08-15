@@ -49,3 +49,9 @@ void	Attivita::info( void ) const
 	std::cout << "Description: " << this->description << std::endl;
 	return ;
 }
+
+void		Attivita::setName(const std::string &a)
+{
+	this->name = a;
+	return ;
+}

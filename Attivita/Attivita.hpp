@@ -19,6 +19,7 @@ public:
 	const Attivita& operator=(const Attivita &a);
 	void	setDescription(const std::string &str);
 	const std::string&	getName() const;
+	void		setName(const std::string &a);
 	void	info( void ) const;
 	~Attivita();
 };

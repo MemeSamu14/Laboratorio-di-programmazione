@@ -41,3 +41,8 @@ const std::string&	Registro::getGiorno() const
 {
 	return (this->giorno);
 }
+
+const Attivita& Registro::getAttvita(int index) const
+{
+	return (this->a[index]);
+}

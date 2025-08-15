@@ -17,6 +17,7 @@ class Registro
 		void		deleteAttivita(int index);
 
 		const std::string&	getGiorno() const;
+		const Attivita& getAttvita(int index) const;
 };
 
 #endif

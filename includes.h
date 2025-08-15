@@ -19,10 +19,6 @@ enum	Selection
 	SABATO = 11,
 	DOMENICA = 12,
 	INDIETRO = 13,
-	VISUALIZZA = 14,
-	AGGIUNGI = 15,
-	ELIMINA = 16,
-	BACK = 17
 };
 
 /*-------------------------draw.cpp----------------------------------*/
@@ -43,3 +39,7 @@ void	mainLoop(Registro **reg);
 void	closeWin(WINDOW *win);
 
 void	visualizzaMenu(Registro **reg, int index);
+
+void	registerMenu(int index, Registro **reg);
+
+void	aggiungiMenu(Registro **reg, int index);

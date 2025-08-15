@@ -52,6 +52,15 @@ int	main()
 
 	Registro** reg = new Registro*[7];
 	initRegister(reg);
+	Attivita	a("* VUOTO *");
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 10; j++)
+			reg[i]->addAttivita(a, j);
+		std::cout << reg[0]->getAttvita(0).getName();
+		// std::cout << "messi" << std::endl;
+		// reg[i]->addAttivita(a, 0);
+	}
 	mainLoop(reg);
 	return (0);
 }
