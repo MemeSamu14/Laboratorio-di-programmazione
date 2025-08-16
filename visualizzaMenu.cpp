@@ -8,7 +8,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	if (selection == 1)
 	{
 		wattron(win, A_STANDOUT);
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		wattroff(win, A_STANDOUT);
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
@@ -25,7 +25,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 2)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		wattron(win, A_STANDOUT);
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		wattroff(win, A_STANDOUT);
@@ -43,7 +43,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 3)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		wattron(win, A_STANDOUT);
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
@@ -61,7 +61,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 4)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		wattron(win, A_STANDOUT);
@@ -79,7 +79,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 5)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -97,7 +97,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 6)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -115,7 +115,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 7)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -133,7 +133,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 8)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -151,7 +151,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 9)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -169,7 +169,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 10)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -187,7 +187,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 10)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -205,7 +205,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 11)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());
@@ -223,7 +223,7 @@ void	printVisualizzaMenu(WINDOW * win, Registro **reg, int index, int selection)
 	}
 	else if (selection == 12)
 	{
-		mvwprintw(win, 4, 2, " 1) %s", reg[index]->getAttvita(0).getName().c_str());
+		mvwprintw(win, 4, 2, " 0) %s", reg[index]->getAttvita(0).getName().c_str());
 		mvwprintw(win, 6, 2, " 2) %s", reg[index]->getAttvita(1).getName().c_str());
 		mvwprintw(win, 8, 2, " 3) %s", reg[index]->getAttvita(2).getName().c_str());
 		mvwprintw(win, 10, 2, " 4) %s", reg[index]->getAttvita(3).getName().c_str());

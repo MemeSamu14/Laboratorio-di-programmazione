@@ -1,58 +1,92 @@
 #include "includes.h"
 
+
+void	boostedGetStr(WINDOW *win, std::string &str, int max)
+{
+	int	input;
+
+	str.clear();
+	noecho();
+	curs_set(1);
+	
+	while ((input = wgetch(win)) != '\n')
+	{
+		if (input == KEY_BACKSPACE || input == 127)
+		{
+			if (!str.empty())
+			{
+				str.pop_back();
+				int y, x;
+				getyx(win, y, x);
+				if (x > 0)
+				{
+					wmove(win, y, x - 1);
+					wdelch(win);
+					wrefresh(win);
+				}
+			}
+		}
+		else if (input >= 32 && input <= 126)
+		{
+			if (str.size() == max)
+			{
+				int y, x;
+				getyx(win, y, x);
+				if (x > 0)
+				{
+					wmove(win, y, x);
+					wdelch(win);
+					wrefresh(win);
+				}
+			}
+			else
+			{
+				str.push_back(static_cast<char>(input));
+				waddch(win, input);
+				wrefresh(win);
+			}
+		}
+	}
+	echo();
+	curs_set(0);
+}
+
 void	aggiungiMenu(Registro **reg, int index)
 {
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
-	bool	exit_condition = false;
 	WINDOW	*win = newwin(10, 50, yMax / 4 , xMax / 3);
-	char		input = 0;
-	int			selection = 0;
-	std::string	inputStr;
+	std::string	str;
+	char		input;
+	Attivita	a;
 
-	int y, x;
-    getyx(win, y, x);
-	int	yIni = y, xIni = x;
-	echo();
-	cbreak();
-	curs_set(1);
-	keypad(win, TRUE);
-	// box(win, 0, 0);
-	mvwprintw(win, 1, 2, "inserisci il nome: ");
-	wrefresh(win);
+	mvwprintw(win, 1, 2, "Select index");
 	while (input = wgetch(win))
 	{
-		if (input == 10 && inputStr.size() > 1)
+		if (input >= '0' && input <= '9')
 			break ;
-		// mvwprintw(win, 0, 2, "%d", input);
-		if (input == 7)
-		{
-			// if (x - 1 == 1)
-			// 	wmove(win, y - 1, x + 49);
-			// else
-			// if (xIni != x)
-			// {
-			if (inputStr.size() > 1)
-			{
-				wdelch(win);
-				inputStr.pop_back();
-			}
-			// std::cout << "input: " << inputStr.size() << std::endl;
-			// }
-			// wmove(win, y, 48);
-			// wdelch(win);
-			// wmove(win, y, x - 1);
-
-			// box(win, 0, 0);
-		}
-		else if (isprint(input) && inputStr.size() < 20)
-		{
-			inputStr.push_back(input);
-		}
-		wrefresh(win);
 	}
+	mvwprintw(win, 1, 2, "Select index: %d", input);
+	wrefresh(win);
+	wgetch(win);
+	wclear(win);
+	mvwprintw(win, 1, 2, "inserisci il nome: ");
+	boostedGetStr(win, str, 20);
+	a.setName(str);
 
+	wclear(win);
+	mvwprintw(win, 1, 2, "inserisci la descrizione: ");
+	boostedGetStr(win, str, 60);
+	a.setDescription(str);
 
+	int selectIndex = static_cast<int>(input) - 48;
+	reg[index]->deleteAttivita(selectIndex);
+	reg[index]->addAttivita(a, selectIndex);
+	// mvwprintw(win, 1, 2, "%s", str.c_str());
+	// reg[index]->getAttvita(static_cast<int>(input - '0')).setName(str);
+	wrefresh(win);
+	closeWin(win);
+	visualizzaMenu(reg, index);
 
 
 
@@ -126,3 +160,5 @@ void	aggiungiMenu(Registro **reg, int index)
 	printw("A Big string which i didn't care to type fully ");
 	mvchgat(0, 0, -1, A_BLINK, 1, NULL);	
 */
+
+
