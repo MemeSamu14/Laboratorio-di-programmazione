@@ -20,6 +20,10 @@ Registro::Registro(const Registro &a)
 
 const Registro& Registro::operator=(const Registro &a)
 {
+	if (this != &a)
+	{
+		// this->getAttvita()
+	}
 	return (*this);
 }
 
@@ -34,6 +38,7 @@ void	Registro::deleteAttivita(int index)
 {
 	if (index >= 10 || index < 0)
 		return ;
+	this->a->setName("* VUOTO *");
 	// this->a[index] = NULL;
 }
 

@@ -26,8 +26,11 @@ Attivita::Attivita(const Attivita &a)
 
 const Attivita& Attivita::operator=(const Attivita &a)
 {
-	this->name = a.name;
-	this->description = a.description;
+	if (this != &a)
+	{
+		this->name = a.name;
+		this->description = a.description;
+	}
 	return (*this);
 }
 

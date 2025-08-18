@@ -312,6 +312,11 @@ void	visualizzaMenu(Registro **reg, int index)
 				closeWin(win);
 				aggiungiMenu(reg, index);
 			}
+			if (selection == 12)
+			{
+				closeWin(win);
+				rimuoviMenu(reg, index);
+			}
 			if (selection == 13)
 			{
 				closeWin(win);

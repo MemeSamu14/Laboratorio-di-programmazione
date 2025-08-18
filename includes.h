@@ -43,3 +43,6 @@ void	visualizzaMenu(Registro **reg, int index);
 void	registerMenu(int index, Registro **reg);
 
 void	aggiungiMenu(Registro **reg, int index);
+
+
+void	rimuoviMenu(Registro **reg, int index);
