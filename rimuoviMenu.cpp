@@ -26,7 +26,7 @@ void	rimuoviMenu(Registro **reg, int index)
 			closeWin(win);
 			visualizzaMenu(reg, index);
 		}
-		else if (selection == false)
+		else if (selection == true)
 		{
 			a.setName("* VUOTO *");
 			a.setDescription("none");
@@ -38,9 +38,8 @@ void	rimuoviMenu(Registro **reg, int index)
 			visualizzaMenu(reg, index);
 		}
 	}
-	// mvwprintw(win, 1, 2, "Nothing hapened");
-	// wrefresh(win);
-	// getch();
+	mvwprintw(win, 1, 2, "Nothing to eliminate");
+	wgetch(win);
 	closeWin(win);
 	visualizzaMenu(reg, index);
 }
