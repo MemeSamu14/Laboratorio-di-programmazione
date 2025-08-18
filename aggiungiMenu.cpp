@@ -66,9 +66,17 @@ void	aggiungiMenu(Registro **reg, int index)
 		if (input >= '0' && input <= '9')
 			break ;
 	}
-	mvwprintw(win, 1, 2, "Select index: %d", input);
+	wclear(win);
 	wrefresh(win);
-	wgetch(win);
+	if (reg[index]->getAttvita(input - '0').getName() != "* VUOTO *")
+	{
+		if (areYouSurePanel("Overrite") == false)
+		{
+			closeWin(win);
+			visualizzaMenu(reg, index);
+		}
+	}
+	wrefresh(win);
 	wclear(win);
 	mvwprintw(win, 1, 2, "inserisci il nome: ");
 	boostedGetStr(win, str, 20);
@@ -82,50 +90,10 @@ void	aggiungiMenu(Registro **reg, int index)
 	int selectIndex = static_cast<int>(input) - 48;
 	reg[index]->deleteAttivita(selectIndex);
 	reg[index]->addAttivita(a, selectIndex);
-	// mvwprintw(win, 1, 2, "%s", str.c_str());
-	// reg[index]->getAttvita(static_cast<int>(input - '0')).setName(str);
 	wrefresh(win);
 	closeWin(win);
 	visualizzaMenu(reg, index);
 
-
-
-	// input = getch();
-	// while (input != 10 && exit_condition != true)
-	// {
-	// 	// mvwprintw(win, 3, 2, "inserisci il nome: ");
-	// 	// wrefresh(win);
-	// 	input = getch();
-	// 	if (inputStr.size() == 20 || input == '	' || input == '*' || input == KEY_BACKSPACE || input < 32 || input == 127)
-	// 	{
-	// 		move(getcury(stdscr), getcurx(stdscr) - 1);
-	// 		delch();
-	// 	}
-	// 	else
-	// 		inputStr.push_back(input);
-	// 	if (inputStr.size() >= 1)
-	// 		exit_condition = true;
-	// 	wrefresh(win);
-	// }
-	// printAggiungiMenu(win, reg, index, selection);
-	// while (input = wgetch(win))
-	// {		
-	// 	if (input == '	')
-	// 	{
-	// 		selection++;
-	// 		if (selection == 12)
-	// 			selection = 1;
-	// 		printAggiungiMenu(win, reg, index, selection);
-	// 	}
-	// 	else if (input == 10)
-	// 	{
-	// 		if (selection == 11)
-	// 		{
-	// 			closeWin(win);
-	// 			registerMenu(index, reg);
-	// 		}
-	// 	}
-	// }
 }
 
 
