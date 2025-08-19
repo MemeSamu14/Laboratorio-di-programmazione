@@ -7,14 +7,14 @@ bool	areYouSurePanel(const char *option)
 	int		yMax, xMax;
 
 	getmaxyx(stdscr, yMax, xMax);
-	WINDOW *win = newwin(yMax / 6, xMax / 5, yMax / 4 , xMax / 2);
+	WINDOW *win = newwin(7, 18, yMax / 4 , xMax / 2);
 	box(win, 0, 0);
     refresh();
 	getmaxyx(win, yMax, xMax);
-	mvwprintw(win, 1, 5, "Are you Sure?");
-	mvwprintw(win, 2, 3 + (strlen(option) / 2), "Option: %s", option);
-	mvwprintw(win, (yMax / 2), (xMax / 8), "Yes");
-	mvwprintw(win, (yMax / 2), (xMax / 3) + (xMax / 2), "No");
+	mvwprintw(win, 1, 2, "Are you Sure?");
+	mvwprintw(win, 3, 2, "Option: %s", option);
+	mvwprintw(win, 5, 2, "Yes");
+	mvwprintw(win, 5, 12, "No");
     refresh();
 	char	input;
 	while (input = wgetch(win))
@@ -27,21 +27,21 @@ bool	areYouSurePanel(const char *option)
 			if (selection == YES)
 			{
 				wattron(win, A_STANDOUT);
-				mvwprintw(win, (yMax / 2), (xMax / 8), "Yes");
+				mvwprintw(win, 5, 2, "Yes");
 				wattroff(win, A_STANDOUT);
-				mvwprintw(win, (yMax / 2), (xMax / 3) + (xMax / 2), "No");
+				mvwprintw(win, 5, 12, "No");
 			}
 			else if (selection == NO)
 			{
-				mvwprintw(win, (yMax / 2), (xMax / 8), "Yes");
+				mvwprintw(win, 5, 2, "Yes");
 				wattron(win, A_STANDOUT);
-				mvwprintw(win, (yMax / 2), (xMax / 3) + (xMax / 2), "No");
+				mvwprintw(win, 5, 12, "No");
 				wattroff(win, A_STANDOUT);
 			}
 			else
 			{
-				mvwprintw(win, (yMax / 2), (xMax / 8), "Yes");
-				mvwprintw(win, (yMax / 2), (xMax / 3) + (xMax / 2), "No");
+				mvwprintw(win, 5, 2, "Yes");
+				mvwprintw(win, 5, 12, "No");
 			}
 		}
 		else if (input == 10)

@@ -128,21 +128,12 @@ void	displayDay(WINDOW *note, char input, int *selection)
 }
 
 
-// int	drawRegisterMenu(WINDOW *win, Registro **reg)
-// {
-// 	// box(win, 0, 0);
-// 	// mvwprintw(win, 1, 2, reg->getGiorno().c_str());
-// 	box(win, 0, 0);
-
-	
-// }
-
 void	registerMenu(int index, Registro **reg)
 {
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW *win = newwin(7, 25, yMax / 4 , xMax / 3);
+	WINDOW *win = newwin(7, 25, yMax / 4 , xMax / 2);
 	char	input;
 	int		selection = 0;
 	box(win, 0, 0);

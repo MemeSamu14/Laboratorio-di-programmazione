@@ -15,7 +15,7 @@ void	mainLoop(Registro **reg)
 	int		yMax, xMax;
 
 	getmaxyx(stdscr, yMax, xMax);
-	WINDOW *win = newwin(yMax / 6, xMax / 6, yMax / 4 , xMax / 2);
+	WINDOW *win = newwin(5, 11, yMax / 4 , xMax / 2);
 	mainMenu(win, input, &mainMenuSelection);
 	while (input = wgetch(win))
 	{
@@ -57,9 +57,6 @@ int	main()
 	{
 		for (int j = 0; j < 10; j++)
 			reg[i]->addAttivita(a, j);
-		// std::cout << reg[0]->getAttvita(0).getName();
-		// std::cout << "messi" << std::endl;
-		// reg[i]->addAttivita(a, 0);
 	}
 	mainLoop(reg);
 	return (0);

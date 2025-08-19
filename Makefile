@@ -5,7 +5,7 @@ LOG_NAME = supp
 CC = g++
 CFLAGS = -g
 
-SRC = main.cpp draw.cpp mainMenu.cpp noteMenu.cpp Registro.cpp Attivita/Attivita.cpp \
+SRC = main.cpp areYouSureMenu.cpp mainMenu.cpp noteMenu.cpp Registro.cpp Attivita/Attivita.cpp \
 visualizzaMenu.cpp aggiungiMenu.cpp rimuoviMenu.cpp attivitaMenu.cpp
 
 

@@ -6,41 +6,29 @@ void	mainMenu(WINDOW *win, char input, int *selection)
 	wrefresh(win);
 	box(win, 0, 0);
 	mvwprintw(win, 1, 2, "Note");
-	mvwprintw(win, 3, 2, "Opzioni");
-	mvwprintw(win, 5, 2, "Esci");
+	mvwprintw(win, 3, 2, "Esci");
 	if (input == '	')
 		(*selection)++;
-	if ((*selection) == 3)
+	if ((*selection) == 2)
 		(*selection) = NOTE;
 	if ((*selection) == NOTE)
 	{
 		wattron(win, A_STANDOUT);
 		mvwprintw(win, 1, 2, "Note");
 		wattroff(win, A_STANDOUT);
-		mvwprintw(win, 3, 2, "Opzioni");
-		mvwprintw(win, 5, 2, "Esci");
-	}
-	else if ((*selection) == OPZIONI)
-	{
-		mvwprintw(win, 1, 2, "Note");
-		wattron(win, A_STANDOUT);
-		mvwprintw(win, 3, 2, "Opzioni");
-		wattroff(win, A_STANDOUT);
-		mvwprintw(win, 5, 2, "Esci");
+		mvwprintw(win, 3, 2, "Esci");
 	}
 	else if ((*selection) == ESCI)
 	{
 		mvwprintw(win, 1, 2, "Note");
-		mvwprintw(win, 3, 2, "Opzioni");
 		wattron(win, A_STANDOUT);
-		mvwprintw(win, 5, 2, "Esci");
+		mvwprintw(win, 3, 2, "Esci");
 		wattroff(win, A_STANDOUT);
 	}
 	else
 	{
 		mvwprintw(win, 1, 2, "Note");
-		mvwprintw(win, 3, 2, "Opzioni");
-		mvwprintw(win, 5, 2, "Esci");
+		mvwprintw(win, 3, 2, "Esci");
 	}
 }
 

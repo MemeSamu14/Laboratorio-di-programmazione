@@ -7,8 +7,7 @@ enum	Selection
 {
 	NOSELECTION = -1,
 	NOTE = 0,
-	OPZIONI = 1,
-	ESCI = 2,
+	ESCI = 1,
 	YES = 4,
 	NO = 5,
 	LUNEDI = 6,
