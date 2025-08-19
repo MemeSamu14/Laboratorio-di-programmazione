@@ -66,8 +66,11 @@ int	optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection, Registro **
 	return (-1);
 }
 
-void	exit()
+void	exit(Registro **reg)
 {
+	for (int i = 0; i < 7; i++)
+		delete reg[i];
+	delete reg;
 	endwin();
 	exit(1);
 }

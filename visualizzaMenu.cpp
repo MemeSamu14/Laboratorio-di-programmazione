@@ -298,11 +298,8 @@ void	visualizzaMenu(Registro **reg, int index)
 			selection++;
 			if (selection == 14)
 				selection = 1;
-			if (selection < 11)
-			{
-				while (reg[index]->getAttvita(selection - 1).getName() == "* VUOTO *")
-					selection++;
-			}
+			while (selection < 11 && reg[index]->getAttvita(selection - 1).getName() == "* VUOTO *")
+				selection++;
 			printVisualizzaMenu(win, reg, index, selection);
 		}
 		else if (input == 10)

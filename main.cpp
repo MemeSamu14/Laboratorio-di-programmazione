@@ -28,7 +28,7 @@ void	mainLoop(Registro **reg)
 				noteMenu(reg);
 			case ESCI:
 				delwin(win);
-				exit();
+				exit(reg);
 		}
 	}
 }
@@ -57,7 +57,7 @@ int	main()
 	{
 		for (int j = 0; j < 10; j++)
 			reg[i]->addAttivita(a, j);
-		std::cout << reg[0]->getAttvita(0).getName();
+		// std::cout << reg[0]->getAttvita(0).getName();
 		// std::cout << "messi" << std::endl;
 		// reg[i]->addAttivita(a, 0);
 	}

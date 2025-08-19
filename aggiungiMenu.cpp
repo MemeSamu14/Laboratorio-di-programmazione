@@ -84,7 +84,7 @@ void	aggiungiMenu(Registro **reg, int index)
 
 	wclear(win);
 	mvwprintw(win, 1, 2, "inserisci la descrizione: ");
-	boostedGetStr(win, str, 60);
+	boostedGetStr(win, str, 80);
 	a.setDescription(str);
 
 	int selectIndex = static_cast<int>(input) - 48;

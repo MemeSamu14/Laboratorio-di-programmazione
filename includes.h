@@ -28,7 +28,7 @@ bool	areYouSurePanel(const char *option);
 /*-------------------------mainMenu.cpp----------------------------------*/
 void	mainMenu(WINDOW *win, char input, int *selection);
 int		optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection, Registro **reg);
-void	exit();
+void	exit(Registro **reg);
 
 void	noteMenu(Registro **reg);
 
