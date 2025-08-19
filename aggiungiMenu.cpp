@@ -162,7 +162,6 @@ void	aggiungiMenu(Registro **reg, int index)
 	a.setOrarioFine(completeStr);
 
 	int selectIndex = static_cast<int>(input) - 48;
-	reg[index]->deleteAttivita(selectIndex);
 	reg[index]->addAttivita(a, selectIndex);
 	wrefresh(win);
 	closeWin(win);

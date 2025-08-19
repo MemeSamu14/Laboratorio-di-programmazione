@@ -8,10 +8,7 @@ void	attivitaMenu(Registro **reg, int index, int selection)
 	WINDOW *win = newwin(10, 30, yMax / 4 , xMax / 3);
 	char	input;
 
-	// start_color();
 	box(win, 0, 0);
-	// mvchgat(0, 0, -1, A_BLINK, 1, NULL);	
-	// init_pair(1, COLOR_CYAN, COLOR_BLACK);
 	wattron(win, A_BOLD);
 	mvwprintw(win, 1, 2, "%s", reg[index]->getGiorno().c_str());
 	wattroff(win, A_BOLD);
