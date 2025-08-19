@@ -5,7 +5,7 @@ void	attivitaMenu(Registro **reg, int index, int selection)
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW *win = newwin(15, 30, yMax / 4 , xMax / 3);
+	WINDOW *win = newwin(10, 30, yMax / 4 , xMax / 3);
 	char	input;
 
 	// start_color();

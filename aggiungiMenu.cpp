@@ -9,7 +9,7 @@ void	boostedGetStr(WINDOW *win, std::string &str, int max)
 	noecho();
 	curs_set(1);
 	
-	while ((input = wgetch(win)) != '\n')
+	while ((input = wgetch(win)) != 10)
 	{
 		if (input == KEY_BACKSPACE || input == 127)
 		{
@@ -89,15 +89,22 @@ void	aggiungiMenu(Registro **reg, int index)
 	wclear(win);
 	mvwprintw(win, 1, 2, "inserisci il nome: ");
 	boostedGetStr(win, str, 20);
-	a.setName(str);
+	if (str.size() < 1)
+		a.setName("Unnamed");
+	else
+		a.setName(str);
 
 	wclear(win);
 	mvwprintw(win, 1, 2, "inserisci la descrizione: ");
 	boostedGetStr(win, str, 80);
-	a.setDescription(str);
+		if (str.size() < 1)
+		a.setDescription("No Description");
+	else
+		a.setDescription(str);
 
 	bool	condition = false;
 	std::string	completeStr;
+	int	start;
 	while (condition == false)
 	{
 		wclear(win);
@@ -106,8 +113,11 @@ void	aggiungiMenu(Registro **reg, int index)
 	
 		if ((str[0] >= '0' && str[0] <= '9'))
 		{
-			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= 24)
+			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) < 24)
+			{
+				start = std::atoi(str.c_str());
 				condition = true;
+			}
 			else
 				inputError(win, "Orario Invalido");
 		}
@@ -132,7 +142,12 @@ void	aggiungiMenu(Registro **reg, int index)
 		if ((str[0] >= '0' && str[0] <= '9'))
 		{
 			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= 24)
-				condition = true;
+			{
+				if (start >= std::atoi(str.c_str()))
+					inputError(win, "Fascia Orario Invalida");
+				else
+					condition = true;
+			}
 			else
 				inputError(win, "Orario Invalido");
 		}
