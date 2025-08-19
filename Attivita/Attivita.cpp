@@ -58,3 +58,30 @@ void		Attivita::setName(const std::string &a)
 	this->name = a;
 	return ;
 }
+
+
+const std::string&	Attivita::getDescription() const
+{
+	return (this->description);
+}
+
+
+const std::string&	Attivita::getOrarioInizio() const
+{
+	return (this->orarioInizio);
+}
+
+void				Attivita::setOrarioInizio(const std::string &a)
+{
+	this->orarioInizio = a;
+}
+
+const std::string&	Attivita::getOrarioFine() const
+{
+	return (this->orarioFine);
+}
+
+void				Attivita::setOrarioFine(const std::string &a)
+{
+	this->orarioFine = a;
+}

@@ -87,6 +87,69 @@ void	aggiungiMenu(Registro **reg, int index)
 	boostedGetStr(win, str, 80);
 	a.setDescription(str);
 
+	bool	condition = false;
+	while (condition == false)
+	{
+		wclear(win);
+		mvwprintw(win, 1, 2, "ora inizio: ");
+		boostedGetStr(win, str, 2);
+		if ((str[0] >= '0' && str[0] <= '9') && (str[0] >= '0' && str[0] <= '9'))
+		{
+			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= 24)
+				condition = true;
+			else
+			{
+				wclear(win);
+				mvwprintw(win, 1, 2, "Orario Invalido"); 
+				noecho();
+				wgetch(win);
+				echo();
+			}
+		}
+		else
+		{
+			wclear(win);
+			mvwprintw(win, 1, 2, "Inserisci dei numeri perfavore"); 
+			noecho();
+			wgetch(win);
+			echo();
+		}
+		
+	}
+	a.setOrarioInizio(str);
+
+
+	condition = false;
+	while (condition == false)
+	{
+		wclear(win);
+		mvwprintw(win, 1, 2, "ora inizio: ");
+		boostedGetStr(win, str, 2);
+		if ((str[0] >= '0' && str[0] <= '9') && (str[0] >= '0' && str[0] <= '9'))
+		{
+			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= 24)
+				condition = true;
+			else
+			{
+				wclear(win);
+				mvwprintw(win, 1, 2, "Orario Invalido"); 
+				noecho();
+				wgetch(win);
+				echo();
+			}
+		}
+		else
+		{
+			wclear(win);
+			mvwprintw(win, 1, 2, "Inserisci dei numeri perfavore"); 
+			noecho();
+			wgetch(win);
+			echo();
+		}
+		
+	}
+	a.setOrarioFine(str);
+
 	int selectIndex = static_cast<int>(input) - 48;
 	reg[index]->deleteAttivita(selectIndex);
 	reg[index]->addAttivita(a, selectIndex);

@@ -46,3 +46,5 @@ void	aggiungiMenu(Registro **reg, int index);
 
 
 void	rimuoviMenu(Registro **reg, int index);
+
+void	attivitaMenu(Registro **reg, int index, int selection);

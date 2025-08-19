@@ -304,6 +304,11 @@ void	visualizzaMenu(Registro **reg, int index)
 		}
 		else if (input == 10)
 		{
+			if (selection >= 1 && selection <= 10)
+			{
+				closeWin(win);
+				attivitaMenu(reg, index, selection - 1);
+			}
 			if (selection == 11)
 			{
 				closeWin(win);
@@ -323,12 +328,3 @@ void	visualizzaMenu(Registro **reg, int index)
 	}
 	wrefresh(win);
 }
-
-
-/*
-	start_color();
-	
-	init_pair(1, COLOR_CYAN, COLOR_BLACK);
-	printw("A Big string which i didn't care to type fully ");
-	mvchgat(0, 0, -1, A_BLINK, 1, NULL);	
-*/
