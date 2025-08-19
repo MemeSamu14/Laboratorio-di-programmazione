@@ -2,7 +2,7 @@
 
 Attivita::Attivita()
 {
-	this->name = "Unamed";
+	// this->name = "* VUOTO *";
 	// aggiunta di unamed_1
 	return ;
 }
@@ -19,7 +19,7 @@ Attivita::Attivita(std::string name)
 }
 
 Attivita::Attivita(const Attivita &a)
-: name(a.name), description(a.description)
+: name(a.name), description(a.description), orarioInizio(a.orarioInizio), orarioFine(a.orarioFine)
 {
 	return ;
 }
@@ -30,6 +30,8 @@ const Attivita& Attivita::operator=(const Attivita &a)
 	{
 		this->name = a.name;
 		this->description = a.description;
+		this->orarioInizio = a.orarioInizio;
+		this->orarioFine = a.orarioFine;
 	}
 	return (*this);
 }

@@ -51,6 +51,15 @@ void	boostedGetStr(WINDOW *win, std::string &str, int max)
 	curs_set(0);
 }
 
+void	inputError(WINDOW *win, const std::string &str)
+{
+	wclear(win);
+	mvwprintw(win, 1, 2, "%s", str.c_str()); 
+	noecho();
+	wgetch(win);
+	echo();
+}
+
 void	aggiungiMenu(Registro **reg, int index)
 {
 	int	yMax, xMax;
@@ -88,67 +97,54 @@ void	aggiungiMenu(Registro **reg, int index)
 	a.setDescription(str);
 
 	bool	condition = false;
+	std::string	completeStr;
 	while (condition == false)
 	{
 		wclear(win);
-		mvwprintw(win, 1, 2, "ora inizio: ");
+		mvwprintw(win, 1, 2, "Ora Inizio: ");
 		boostedGetStr(win, str, 2);
-		if ((str[0] >= '0' && str[0] <= '9') && (str[0] >= '0' && str[0] <= '9'))
+	
+		if ((str[0] >= '0' && str[0] <= '9'))
 		{
 			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= 24)
 				condition = true;
 			else
-			{
-				wclear(win);
-				mvwprintw(win, 1, 2, "Orario Invalido"); 
-				noecho();
-				wgetch(win);
-				echo();
-			}
+				inputError(win, "Orario Invalido");
 		}
 		else
-		{
-			wclear(win);
-			mvwprintw(win, 1, 2, "Inserisci dei numeri perfavore"); 
-			noecho();
-			wgetch(win);
-			echo();
-		}
+			inputError(win, "Inserisci dei numeri perfavore");
+
 		
 	}
-	a.setOrarioInizio(str);
-
+	if (std::atoi(str.c_str()) < 10)
+		completeStr = "0" + std::string(1, str[0]) + ":00";
+	else
+		completeStr = std::string(1, str[0]) + std::string(1, str[1]) + ":00";
+	a.setOrarioInizio(completeStr);
 
 	condition = false;
 	while (condition == false)
 	{
 		wclear(win);
-		mvwprintw(win, 1, 2, "ora inizio: ");
+		mvwprintw(win, 1, 2, "Ora Fine: ");
 		boostedGetStr(win, str, 2);
-		if ((str[0] >= '0' && str[0] <= '9') && (str[0] >= '0' && str[0] <= '9'))
+	
+		if ((str[0] >= '0' && str[0] <= '9'))
 		{
 			if (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= 24)
 				condition = true;
 			else
-			{
-				wclear(win);
-				mvwprintw(win, 1, 2, "Orario Invalido"); 
-				noecho();
-				wgetch(win);
-				echo();
-			}
+				inputError(win, "Orario Invalido");
 		}
 		else
-		{
-			wclear(win);
-			mvwprintw(win, 1, 2, "Inserisci dei numeri perfavore"); 
-			noecho();
-			wgetch(win);
-			echo();
-		}
-		
+			inputError(win, "Inserisci dei numeri perfavore");
 	}
-	a.setOrarioFine(str);
+	completeStr.clear();
+	if (std::atoi(str.c_str()) < 10)
+		completeStr = "0" + std::string(1, str[0]) + ":00";
+	else
+		completeStr = std::string(1, str[0]) + std::string(1, str[1]) + ":00";
+	a.setOrarioFine(completeStr);
 
 	int selectIndex = static_cast<int>(input) - 48;
 	reg[index]->deleteAttivita(selectIndex);
