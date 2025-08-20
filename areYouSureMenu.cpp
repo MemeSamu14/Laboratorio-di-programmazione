@@ -7,7 +7,7 @@ bool	areYouSurePanel(const char *option)
 	int		yMax, xMax;
 
 	getmaxyx(stdscr, yMax, xMax);
-	WINDOW *win = newwin(7, 18, yMax / 4 , xMax / 2);
+	WINDOW *win = newwin(7, 18, 0, 0);
 	box(win, 0, 0);
     refresh();
 	getmaxyx(win, yMax, xMax);

@@ -285,7 +285,7 @@ void	visualizzaMenu(Registro **reg, int index)
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW *win = newwin(32, 30, yMax / 4 , xMax / 3);
+	WINDOW *win = newwin(32, 30, 0, 0);
 	char	input;
 	int		selection = 0;
 

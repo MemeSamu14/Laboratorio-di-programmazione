@@ -5,7 +5,7 @@ void	rimuoviMenu(Registro **reg, int index)
 {
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
-	WINDOW	*win = newwin(10, 50, yMax / 4 , xMax / 3);
+	WINDOW	*win = newwin(10, 50, 0, 0);
 	std::string	str;
 	char		input;
 	Attivita	a;

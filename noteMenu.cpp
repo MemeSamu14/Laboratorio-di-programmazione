@@ -133,7 +133,7 @@ void	registerMenu(int index, Registro **reg)
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
 
-	WINDOW *win = newwin(7, 25, yMax / 4 , xMax / 2);
+	WINDOW *win = newwin(7, 25, 0, 0);
 	char	input;
 	int		selection = 0;
 	box(win, 0, 0);
@@ -194,7 +194,7 @@ void	noteMenu(Registro **reg)
 {
 	int	yMax, xMax;
 	getmaxyx(stdscr, yMax, xMax);
-	WINDOW *note = newwin(17, 13, yMax / 4 , xMax / 2);
+	WINDOW *note = newwin(17, 13, 0, 0);
 	getmaxyx(note, yMax, xMax);
 	int	noteSelection = LUNEDI - 1;
 	char	input = LUNEDI - 1;

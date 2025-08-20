@@ -15,7 +15,7 @@ void	mainLoop(Registro **reg)
 	int		yMax, xMax;
 
 	getmaxyx(stdscr, yMax, xMax);
-	WINDOW *win = newwin(5, 11, yMax / 4 , xMax / 2);
+	WINDOW *win = newwin(5, 11, 0, 0);
 	mainMenu(win, input, &mainMenuSelection);
 	while (input = wgetch(win))
 	{
