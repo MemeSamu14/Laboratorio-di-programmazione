@@ -51,6 +51,8 @@
         "text_encoding": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "informazioni": "c"
+        "informazioni": "c",
+        "fstream": "cpp",
+        "sstream": "cpp"
     }
 }

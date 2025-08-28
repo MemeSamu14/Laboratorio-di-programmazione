@@ -2,8 +2,6 @@
 
 Attivita::Attivita()
 {
-	// this->name = "* VUOTO *";
-	// aggiunta di unamed_1
 	return ;
 }
 
@@ -49,13 +47,14 @@ const std::string&	Attivita::getName() const
 
 void	Attivita::info( void ) const
 {
-	// std::cout << "Attivita" << std::endl;
 	std::cout << "Name: " << this->name << std::endl;
 	std::cout << "Description: " << this->description << std::endl;
+	std::cout << "orarioInizio: " << this->orarioInizio << std::endl;
+	std::cout << "orarioFine: " << this->orarioFine << std::endl;
 	return ;
 }
 
-void		Attivita::setName(const std::string &a)
+void	Attivita::setName(const std::string &a)
 {
 	this->name = a;
 	return ;
@@ -73,7 +72,7 @@ const std::string&	Attivita::getOrarioInizio() const
 	return (this->orarioInizio);
 }
 
-void				Attivita::setOrarioInizio(const std::string &a)
+void	Attivita::setOrarioInizio(const std::string &a)
 {
 	this->orarioInizio = a;
 }
@@ -83,7 +82,7 @@ const std::string&	Attivita::getOrarioFine() const
 	return (this->orarioFine);
 }
 
-void				Attivita::setOrarioFine(const std::string &a)
+void	Attivita::setOrarioFine(const std::string &a)
 {
 	this->orarioFine = a;
 }

@@ -2,23 +2,22 @@ NAME = notes
 TESTNAME = Test
 SUPPRESSION_NAME = supp.supp
 LOG_NAME = supp
-CC = g++
+CXX = c++
 CFLAGS = -g
 
 SRC = main.cpp areYouSureMenu.cpp mainMenu.cpp noteMenu.cpp Registro.cpp Attivita/Attivita.cpp \
 visualizzaMenu.cpp aggiungiMenu.cpp rimuoviMenu.cpp attivitaMenu.cpp
 
 
-ATTIVITATESTSRC = Attivita/mainAttivitaTest.cpp Attivita/TestAttivita.cpp Attivita/Attivita.cpp
+ATTIVITATESTSRC = AttivitaTest.cpp Attivita.cpp
+
+ATTIVITAFLAGS = -o Test -I/usr/local/include -L/usr/local/lib -lgtest -lgtest_main -pthread
 
 $(NAME): $(SRC)
-	$(CC) -o $(NAME) $(CFLAGS) $(SRC) -lncurses -lpanel
-
-valTestAttivita:
-	$(CC) -o $(TESTNAME) $(ATTIVITATESTSRC) -lncurses -lpanel && sudo valgrind ./$(TESTNAME)
+	$(CXX) -o $(NAME) $(CFLAGS) $(SRC) -lncurses -lpanel
 
 TestAttivita:
-	$(CC) -o $(TESTNAME) $(ATTIVITATESTSRC) -lncurses -lpanel && ./$(TESTNAME)
+	cd Attivita && $(CXX) -o $(TESTNAME) $(ATTIVITATESTSRC) $(ATTIVITAFLAGS) && ./$(TESTNAME)
 
 suppressions:
 	sudo valgrind --leak-check=full --gen-suppressions=all --log-file="$(LOG_NAME)" ./$(NAME)
