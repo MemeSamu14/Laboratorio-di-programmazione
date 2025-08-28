@@ -1,4 +1,4 @@
-NAME = Rinoceronte
+NAME = notes
 TESTNAME = Test
 SUPPRESSION_NAME = supp.supp
 LOG_NAME = supp
