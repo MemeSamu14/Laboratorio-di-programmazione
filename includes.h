@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include <iostream>
 #include <cstring>
-#include "Registro.hpp"
+#include "Registro/Registro.hpp"
 
 enum	Selection
 {
@@ -30,20 +30,10 @@ int		optionsMainMenu(WINDOW *win, char input, int *mainMenuSelection, Registro *
 void	exit(Registro **reg);
 
 void	noteMenu(Registro **reg);
-
-
 void	mainLoop(Registro **reg);
-
-
 void	closeWin(WINDOW *win);
-
 void	visualizzaMenu(Registro **reg, int index);
-
 void	registerMenu(int index, Registro **reg);
-
 void	aggiungiMenu(Registro **reg, int index);
-
-
 void	rimuoviMenu(Registro **reg, int index);
-
 void	attivitaMenu(Registro **reg, int index, int selection);

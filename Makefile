@@ -4,29 +4,57 @@ SUPPRESSION_NAME = supp.supp
 LOG_NAME = supp
 CXX = c++
 CFLAGS = -g
+OBJ_DIR = obj
+SRC = main.cpp menu/areYouSureMenu.cpp menu/mainMenu.cpp menu/noteMenu.cpp Registro.cpp Attivita/Attivita.cpp \
+menu/visualizzaMenu.cpp menu/aggiungiMenu.cpp menu/rimuoviMenu.cpp menu/attivitaMenu.cpp
 
-SRC = main.cpp areYouSureMenu.cpp mainMenu.cpp noteMenu.cpp Registro.cpp Attivita/Attivita.cpp \
-visualizzaMenu.cpp aggiungiMenu.cpp rimuoviMenu.cpp attivitaMenu.cpp
-
+OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))
 
 ATTIVITATESTSRC = AttivitaTest.cpp Attivita.cpp
+ATTIVITATESTOBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(ATTIVITATESTSRC:.cpp=.o)))
+ATTIVITAFLAGS = -I/usr/local/include -L/usr/local/lib -lgtest -lgtest_main -pthread
 
-ATTIVITAFLAGS = -o Test -I/usr/local/include -L/usr/local/lib -lgtest -lgtest_main -pthread
 
-$(NAME): $(SRC)
-	$(CXX) -o $(NAME) $(CFLAGS) $(SRC) -lncurses -lpanel
+REGISTROTESTSRC = RegistroTest.cpp Registro.cpp ../Attivita/Attivita.cpp
+REGISTROTESTOBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(REGISTROTESTSRC:.cpp=.o)))
+REGISTROFLAGS = -I/usr/local/include -L/usr/local/lib -lgtest -lgtest_main -pthread
 
-TestAttivita:
-	cd Attivita && $(CXX) -o $(TESTNAME) $(ATTIVITATESTSRC) $(ATTIVITAFLAGS) && ./$(TESTNAME)
+
+$(NAME): $(OBJ_DIR) $(OBJ)
+	$(CXX) -o $(NAME) $(CFLAGS) $(OBJ) -lncurses -lpanel
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o: Attivita/%.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o: Registro/%.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o: menu/%.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+TestAttivita: $(OBJ_DIR) $(ATTIVITATESTOBJ)
+	$(CXX) $(ATTIVITATESTOBJ) -o Attivita/$(TESTNAME) $(ATTIVITAFLAGS)
+	./Attivita/$(TESTNAME)
+
+TestRegistro: $(OBJ_DIR) $(REGISTROTESTOBJ)
+	$(CXX) $(REGISTROTESTOBJ) -o Registro/$(TESTNAME) $(REGISTROFLAGS)
+	./Registro/$(TESTNAME)
+
+run:
+	./$(NAME)
 
 suppressions:
-	sudo valgrind --leak-check=full --gen-suppressions=all --log-file="$(LOG_NAME)" ./$(NAME)
-# 	sed -n '/{/,/}/p' $(LOG_NAME) > $(SUPPRESSION_NAME)
-# 	rm -f $(LOG_NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=$(SUPPRESSION_NAME) ./$(NAME)
 
 fclean:
-	rm -f $(NAME) && rm -f $(TESTNAME)
-	
+	rm -rf $(OBJ_DIR) $(NAME) Attivita/$(TESTNAME) Registro/$(TESTNAME)
+
 re: fclean $(NAME)
 
 .PHONY: all clean fclean re

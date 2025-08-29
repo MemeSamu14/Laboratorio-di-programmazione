@@ -4,9 +4,9 @@
 class AttivitaTest : public ::testing::Test
 {
 	protected:
-		Attivita* attivita;
-		void SetUp() override { attivita = new Attivita(); }
-		void TearDown() override { delete attivita; }
+		Attivita *attivita;
+		void SetUp() override { this->attivita = new Attivita(); }
+		void TearDown() override { delete this->attivita; }
 };
 
 TEST_F(AttivitaTest, DefaultConstructor)
@@ -19,8 +19,8 @@ TEST_F(AttivitaTest, DefaultConstructor)
 
 TEST_F(AttivitaTest, NormalConstructor)
 {
-    Attivita attivita_con_nome("Name");
-    ASSERT_EQ("Name", attivita_con_nome.getName());
+    Attivita att("Name");
+    ASSERT_EQ("Name", att.getName());
 }
 
 
@@ -33,29 +33,29 @@ TEST_F(AttivitaTest, SetName)
 
 TEST_F(AttivitaTest, SetDescription)
 {
-    const std::string descrizione = "test";
-    attivita->setDescription(descrizione);
-    ASSERT_EQ(descrizione, attivita->getDescription());
+    const std::string str = "test";
+    attivita->setDescription(str);
+    ASSERT_EQ(str, attivita->getDescription());
 }
 
-TEST_F(AttivitaTest, SetOrarioInizioImpostaCorrettamente)
+TEST_F(AttivitaTest, SetOrarioInizio)
 {
-    const std::string orario = "09:00";
-    attivita->setOrarioInizio(orario);
-    ASSERT_EQ(orario, attivita->getOrarioInizio());
+    const std::string str = "09:00";
+    attivita->setOrarioInizio(str);
+    ASSERT_EQ(str, attivita->getOrarioInizio());
 }
 
-TEST_F(AttivitaTest, SetOrarioFineImpostaCorrettamente)
+TEST_F(AttivitaTest, SetOrarioFine)
 {
-    const std::string orario = "10:30";
-    attivita->setOrarioFine(orario);
-    ASSERT_EQ(orario, attivita->getOrarioFine());
+    const std::string str = "10:30";
+    attivita->setOrarioFine(str);
+    ASSERT_EQ(str, attivita->getOrarioFine());
 }
 
-TEST_F(AttivitaTest, OperatoreAssegnazioneCreaUnaCopiaCorretta)
+TEST_F(AttivitaTest, OperatoreAssegnazione)
 {
-    Attivita sorgente("Nuova Attivita");
-    sorgente.setDescription("Descrizione per la copia.");
+    Attivita sorgente("attivita");
+    sorgente.setDescription("description");
     sorgente.setOrarioInizio("11:00");
     sorgente.setOrarioFine("12:00");
 
